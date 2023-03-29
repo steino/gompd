@@ -53,7 +53,7 @@ func (cmd *Command) OK() error {
 
 // Attrs sends command to server and reads attributes returned in response.
 func (cmd *Command) Attrs() (Attrs, error) {
-	id, err := cmd.client.cmd(cmd.cmd)
+	id, err := cmd.client.cmd("%v", cmd.cmd)
 	if err != nil {
 		return nil, err
 	}
@@ -65,7 +65,7 @@ func (cmd *Command) Attrs() (Attrs, error) {
 // AttrsList sends command to server and reads a list of attributes returned in response.
 // Each attribute group starts with key startKey.
 func (cmd *Command) AttrsList(startKey string) ([]Attrs, error) {
-	id, err := cmd.client.cmd(cmd.cmd)
+	id, err := cmd.client.cmd("%v", cmd.cmd)
 	if err != nil {
 		return nil, err
 	}
@@ -77,7 +77,7 @@ func (cmd *Command) AttrsList(startKey string) ([]Attrs, error) {
 // Strings sends command to server and reads a list of strings returned in response.
 // Each string have the key key.
 func (cmd *Command) Strings(key string) ([]string, error) {
-	id, err := cmd.client.cmd(cmd.cmd)
+	id, err := cmd.client.cmd("%v", cmd.cmd)
 	if err != nil {
 		return nil, err
 	}
@@ -89,7 +89,7 @@ func (cmd *Command) Strings(key string) ([]string, error) {
 // Binary sends command to server and reads its binary response, returning the data and its total size (which can be
 // greater than the returned chunk).
 func (cmd *Command) Binary() ([]byte, int, error) {
-	id, err := cmd.client.cmd(cmd.cmd)
+	id, err := cmd.client.cmd("%v", cmd.cmd)
 	if err != nil {
 		return nil, 0, err
 	}
